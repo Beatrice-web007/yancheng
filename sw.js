@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_NAME = "yancheng-v1.2.0";
+const CACHE_NAME = "yancheng-v1.3.0";
 const APP_SHELL = [
   "./",
   "./index.html",

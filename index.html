@@ -2107,8 +2107,14 @@ body.modal-open {
 }
 
 .today-main .event-row {
-  grid-template-columns: 22px 56px minmax(0, 1fr) 28px;
+  grid-template-columns: 22px 72px minmax(0, 1fr) 28px;
+  gap: 14px;
   padding-block: 14px;
+}
+
+.today-main .event-time {
+  font-size: 12px;
+  color: color-mix(in srgb, var(--ink-soft) 82%, var(--muted));
 }
 
 .today-main .event-title {
@@ -2303,8 +2309,12 @@ body.modal-open {
   }
 
   .today-main .event-row {
-    grid-template-columns: 22px 48px minmax(0, 1fr) 26px;
-    gap: 9px;
+    grid-template-columns: 22px 62px minmax(0, 1fr) 26px;
+    gap: 11px;
+  }
+
+  .today-main .event-time {
+    font-size: 11px;
   }
 
   .today-main .event-title {
@@ -2313,6 +2323,190 @@ body.modal-open {
 
   .event-time {
     font-size: 10px;
+  }
+}
+
+/* ---------- Today: view switch ---------- */
+
+.section-tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.view-switch {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+.view-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  transition: color 0.16s ease, background 0.16s ease;
+}
+
+.view-switch-btn .icon {
+  width: 13px;
+  height: 13px;
+}
+
+.view-switch-btn:hover {
+  color: var(--ink-soft);
+}
+
+.view-switch-btn.is-active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(18, 38, 28, 0.08);
+}
+
+/* ---------- Today: Eisenhower matrix ---------- */
+
+.quad-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.quad {
+  min-width: 0;
+  padding: 12px 13px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface) 82%, var(--paper));
+}
+
+.quad--q1 {
+  border-left: 3px solid var(--danger);
+}
+
+.quad--q2 {
+  border-left: 3px solid var(--accent);
+}
+
+.quad--q3 {
+  border-left: 3px solid var(--ochre);
+}
+
+.quad--q4 {
+  border-left: 3px solid var(--line-strong);
+}
+
+.quad-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.quad-title {
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.quad-count {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.quad-hint {
+  margin-top: 2px;
+  color: var(--faint);
+  font-size: 10.5px;
+  line-height: 1.5;
+}
+
+.quad-list {
+  display: grid;
+  gap: 2px;
+  margin-top: 9px;
+}
+
+.quad-row {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  padding: 6px 0;
+  border-top: 1px solid color-mix(in srgb, var(--line) 62%, transparent);
+}
+
+.quad-row:first-child {
+  border-top: 0;
+}
+
+.quad-row .check {
+  width: 17px;
+  height: 17px;
+}
+
+.quad-row-title {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 12.5px;
+  line-height: 1.45;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quad-row-title:hover {
+  color: var(--accent);
+}
+
+.quad-row.is-done .quad-row-title {
+  color: var(--faint);
+  text-decoration: line-through;
+}
+
+.quad-row-time {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.quad-empty {
+  padding: 4px 0 2px;
+  color: var(--faint);
+  font-size: 11px;
+}
+
+.quad-loose {
+  margin-top: 10px;
+  padding: 11px 13px 12px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface) 66%, var(--paper));
+}
+
+.quad-loose .quad-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 18px;
+}
+
+@media (max-width: 720px) {
+  .quad-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quad-loose .quad-list {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3891,6 +4085,194 @@ body.modal-open {
 }
 
 
+/* ---------- Stage editor ---------- */
+
+.stage-edit-list {
+  display: grid;
+  gap: 6px;
+}
+
+.stage-edit-row {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: 6px;
+}
+
+.stage-edit-index {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-align: right;
+}
+
+.stage-edit-row .input {
+  min-width: 0;
+}
+
+.stage-edit-row .icon-btn {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.stage-edit-row .icon-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.stage-edit-add {
+  justify-self: start;
+  margin-top: 2px;
+}
+
+@media (max-width: 520px) {
+  .stage-edit-row {
+    grid-template-columns: 20px minmax(0, 1fr) auto auto auto;
+    gap: 4px;
+  }
+
+  .stage-edit-row .icon-btn {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* ---------- Project categories ---------- */
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.tag-pill {
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 10.5px;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.project-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: -4px 0 18px;
+}
+
+.filter-label {
+  margin-right: 2px;
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filter-chip {
+  padding: 4px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11.5px;
+  transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--line-strong);
+  color: var(--ink-soft);
+}
+
+.filter-chip.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.filter-hint {
+  color: var(--faint);
+  font-size: 10.5px;
+}
+
+/* ---------- Tag picker inside the project modal ---------- */
+
+.tag-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 6px;
+}
+
+.tag-choice {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+}
+
+.tag-choice input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tag-choice:hover {
+  border-color: var(--line-strong);
+  color: var(--ink-soft);
+}
+
+.tag-choice:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.tag-choice:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Category manager modal ---------- */
+
+.tag-admin-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag-admin-add .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.tag-admin-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.tag-admin-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 6px;
+}
+
 
 /* ---- settings.css ---- */
 /* 研程 — settings and confirmation */
@@ -5173,6 +5555,7 @@ body.modal-open {
       events: [],
       habits: [],
       projects: [],
+      tags: [],
       sparks: []
     };
   }
@@ -5190,7 +5573,7 @@ body.modal-open {
     };
   }
 
-  function createProject(name, startDate, color, forcedId) {
+  function createProject(name, startDate, color, forcedId, tagIds) {
     const id = forcedId || U.uid("project");
     const start = U.isDateString(startDate) ? startDate : U.todayISO();
     return {
@@ -5198,7 +5581,19 @@ body.modal-open {
       name,
       color: U.safeColor(color, U.PROJECT_COLORS[0]),
       createdAt: nowISO(),
+      tagIds: Array.isArray(tagIds) ? tagIds.filter((tagId) => typeof tagId === "string" && tagId) : [],
       steps: STAGE_TEMPLATE.map((template, index) => createStep(template, index, start, id))
+    };
+  }
+
+  function normalizeTag(raw) {
+    if (!raw || typeof raw !== "object") return null;
+    const name = String(raw.name || "").trim().slice(0, 20);
+    if (!name) return null;
+    return {
+      id: typeof raw.id === "string" && raw.id ? raw.id : U.uid("tag"),
+      name,
+      createdAt: raw.createdAt ? String(raw.createdAt) : nowISO()
     };
   }
 
@@ -5215,7 +5610,7 @@ body.modal-open {
   }
 
   function normalizeStep(raw, index, projectStart, projectId) {
-    const fallback = STAGE_TEMPLATE[index] || STAGE_TEMPLATE[STAGE_TEMPLATE.length - 1];
+    const fallback = STAGE_TEMPLATE[index] || { key: `custom-${index + 1}`, name: `阶段 ${index + 1}` };
     const start = U.isDateString(raw && raw.start) ? raw.start : U.addDays(projectStart, index * STAGE_DAYS);
     const end = U.isDateString(raw && raw.end) ? raw.end : U.addDays(start, STAGE_DAYS - 1);
     const subtasks = raw && Array.isArray(raw.subtasks)
@@ -5240,13 +5635,13 @@ body.modal-open {
     const start = raw.steps && raw.steps[0] && U.isDateString(raw.steps[0].start)
       ? raw.steps[0].start
       : U.addDays(U.todayISO(), -7);
-    let steps = raw.steps && Array.isArray(raw.steps) && raw.steps.length
-      ? raw.steps.slice(0, 8).map((step, index) => normalizeStep(step, index, start, id))
+    const steps = raw.steps && Array.isArray(raw.steps) && raw.steps.length
+      ? raw.steps.map((step, index) => normalizeStep(step, index, start, id))
       : STAGE_TEMPLATE.map((template, index) => createStep(template, index, start, id));
-    while (steps.length < STAGE_TEMPLATE.length) {
-      steps.push(createStep(STAGE_TEMPLATE[steps.length], steps.length, start, id));
-    }
-    return { id, name, color, createdAt, steps };
+    const tagIds = Array.isArray(raw.tagIds)
+      ? raw.tagIds.filter((tagId) => typeof tagId === "string" && tagId)
+      : [];
+    return { id, name, color, createdAt, tagIds, steps };
   }
 
   function normalizeHabit(raw) {
@@ -5266,8 +5661,15 @@ body.modal-open {
     };
   }
 
+  function normalizeFlag(value) {
+    return typeof value === "boolean" ? value : null;
+  }
+
   function normalizeEvent(raw) {
     if (!raw || typeof raw !== "object") return null;
+    const important = normalizeFlag(raw.important);
+    const urgent = normalizeFlag(raw.urgent);
+    const classified = important !== null && urgent !== null;
     return {
       id: typeof raw.id === "string" && raw.id ? raw.id : U.uid("event"),
       title: String(raw.title || "未命名日程").slice(0, 180),
@@ -5276,6 +5678,8 @@ body.modal-open {
       end: U.isTimeString(raw.end) ? String(raw.end || "") : "",
       done: Boolean(raw.done),
       notes: String(raw.notes || "").slice(0, 2000),
+      important: classified ? important : null,
+      urgent: classified ? urgent : null,
       projectId: raw.projectId ? String(raw.projectId) : null,
       stepId: raw.stepId ? String(raw.stepId) : null,
       createdAt: raw.createdAt ? String(raw.createdAt) : nowISO(),
@@ -5304,6 +5708,11 @@ body.modal-open {
     const events = Array.isArray(raw.events) ? raw.events.map(normalizeEvent).filter(Boolean) : [];
     const habits = Array.isArray(raw.habits) ? raw.habits.map(normalizeHabit).filter(Boolean) : [];
     const projects = Array.isArray(raw.projects) ? raw.projects.map(normalizeProject).filter(Boolean) : [];
+    const tags = Array.isArray(raw.tags) ? raw.tags.map(normalizeTag).filter(Boolean) : [];
+    const tagIds = new Set(tags.map((tag) => tag.id));
+    projects.forEach((project) => {
+      project.tagIds = project.tagIds.filter((tagId) => tagIds.has(tagId));
+    });
     const sparks = Array.isArray(raw.sparks)
       ? raw.sparks.map(normalizeSpark).filter(Boolean)
       : (meta.isDemo && YC.seed && typeof YC.seed.demoSparks === "function" ? YC.seed.demoSparks() : []);
@@ -5329,6 +5738,7 @@ body.modal-open {
       events,
       habits,
       projects,
+      tags,
       sparks
     };
   }
@@ -5489,6 +5899,11 @@ body.modal-open {
     event.end = U.isTimeString(payload.end) ? String(payload.end || "") : "";
     event.done = Boolean(payload.done);
     event.notes = String(payload.notes || "").slice(0, 2000);
+    const important = normalizeFlag(payload.important);
+    const urgent = normalizeFlag(payload.urgent);
+    const classified = important !== null && urgent !== null;
+    event.important = classified ? important : null;
+    event.urgent = classified ? urgent : null;
     event.projectId = payload.projectId || null;
     event.stepId = payload.stepId || null;
     event.updatedAt = nowISO();
@@ -5622,10 +6037,12 @@ body.modal-open {
     commit("spark-delete");
   }
 
-  function createNewProject(name, startDate, color) {
+  function createNewProject(name, startDate, color, tagIds) {
     const label = String(name || "").trim();
     if (!label) throw new Error("请填写课题名称");
-    const project = createProject(label.slice(0, 80), startDate, color);
+    const known = new Set(data.tags.map((tag) => tag.id));
+    const picked = Array.isArray(tagIds) ? tagIds.filter((tagId) => known.has(tagId)) : [];
+    const project = createProject(label.slice(0, 80), startDate, color, null, picked);
     data.projects.push(project);
     commit("project-add");
     return project;
@@ -5636,6 +6053,10 @@ body.modal-open {
     if (!project) return;
     if (typeof patch.name === "string" && patch.name.trim()) project.name = patch.name.trim().slice(0, 80);
     if (patch.color) project.color = U.safeColor(patch.color, project.color);
+    if (Array.isArray(patch.tagIds)) {
+      const known = new Set(data.tags.map((tag) => tag.id));
+      project.tagIds = patch.tagIds.filter((tagId) => known.has(tagId));
+    }
     if (U.isDateString(patch.start)) {
       const oldStart = project.steps[0] ? project.steps[0].start : patch.start;
       const delta = U.diffDays(oldStart, patch.start);
@@ -5662,6 +6083,55 @@ body.modal-open {
     });
     data.projects = data.projects.filter((item) => item.id !== projectId);
     commit("project-delete");
+  }
+
+  function saveProjectStages(projectId, rows) {
+    const project = getProject(projectId);
+    if (!project) return null;
+    const cleaned = (Array.isArray(rows) ? rows : [])
+      .map((row) => ({
+        id: row && row.id ? String(row.id) : "",
+        name: String((row && row.name) || "").trim().slice(0, 40)
+      }))
+      .filter((row) => row.name);
+    if (!cleaned.length) throw new Error("至少保留一个阶段");
+
+    const byId = new Map(project.steps.map((step) => [step.id, step]));
+    const keptIds = new Set(cleaned.filter((row) => byId.has(row.id)).map((row) => row.id));
+    const today = U.todayISO();
+    const next = [];
+
+    cleaned.forEach((row) => {
+      if (row.id && byId.has(row.id)) {
+        const step = byId.get(row.id);
+        step.name = row.name;
+        next.push(step);
+        return;
+      }
+      const previous = next[next.length - 1];
+      const start = previous && U.isDateString(previous.end) ? U.addDays(previous.end, 1) : today;
+      next.push({
+        id: U.uid(`step-${projectId.slice(-5)}`),
+        key: `custom-${next.length + 1}`,
+        name: row.name,
+        start,
+        end: U.addDays(start, STAGE_DAYS - 1),
+        subtasks: []
+      });
+    });
+
+    const keptStepIds = new Set(next.map((step) => step.id));
+    data.events.forEach((event) => {
+      if (event.projectId !== projectId) return;
+      if (event.stepId && keptStepIds.has(event.stepId)) return;
+      event.projectId = null;
+      event.stepId = null;
+      event.updatedAt = nowISO();
+    });
+
+    project.steps = next;
+    commit("project-stages");
+    return project;
   }
 
   function updateStepDates(projectId, stepId, start, end) {
@@ -5738,6 +6208,45 @@ body.modal-open {
     commit("stage-complete-empty");
   }
 
+  function getTag(tagId) {
+    return data.tags.find((tag) => tag.id === tagId) || null;
+  }
+
+  function addTag(name) {
+    const label = String(name || "").trim().slice(0, 20);
+    if (!label) throw new Error("请填写分类名称");
+    if (data.tags.some((tag) => tag.name === label)) throw new Error("这个分类已经存在");
+    const tag = { id: U.uid("tag"), name: label, createdAt: nowISO() };
+    data.tags.push(tag);
+    commit("tag-add");
+    return tag;
+  }
+
+  function renameTag(tagId, name) {
+    const tag = getTag(tagId);
+    if (!tag) return null;
+    const label = String(name || "").trim().slice(0, 20);
+    if (!label) throw new Error("请填写分类名称");
+    if (data.tags.some((item) => item.id !== tagId && item.name === label)) {
+      throw new Error("这个分类已经存在");
+    }
+    tag.name = label;
+    commit("tag-rename");
+    return tag;
+  }
+
+  function deleteTag(tagId) {
+    data.tags = data.tags.filter((tag) => tag.id !== tagId);
+    data.projects.forEach((project) => {
+      project.tagIds = (project.tagIds || []).filter((id) => id !== tagId);
+    });
+    commit("tag-delete");
+  }
+
+  function getTagUsage(tagId) {
+    return data.projects.filter((project) => (project.tagIds || []).includes(tagId)).length;
+  }
+
   function exportObject() {
     return {
       app: "研程",
@@ -5747,6 +6256,7 @@ body.modal-open {
         events: data.events.length,
         habits: data.habits.length,
         projects: data.projects.length,
+        tags: data.tags.length,
         sparks: data.sparks.length
       },
       data
@@ -5803,6 +6313,11 @@ body.modal-open {
     getEvent,
     getHabit,
     getSpark,
+    getTag,
+    addTag,
+    renameTag,
+    deleteTag,
+    getTagUsage,
     findSubtaskByEvent,
     upsertEvent,
     toggleEvent,
@@ -5820,6 +6335,7 @@ body.modal-open {
     createProjectRecord: createProject,
     updateProject,
     deleteProject,
+    saveProjectStages,
     updateStepDates,
     addSubtask,
     toggleSubtask,
@@ -6088,6 +6604,7 @@ body.modal-open {
         }
       ],
       projects: [p1, p2],
+      tags: [],
       sparks: demoSparks()
     };
   }
@@ -6394,6 +6911,12 @@ body.modal-open {
     render();
   }
 
+  function replaceTop(config) {
+    if (!stack.length) return;
+    stack[stack.length - 1] = config;
+    render();
+  }
+
   function closeTop() {
     if (!stack.length) return;
     stack.pop();
@@ -6538,6 +7061,7 @@ body.modal-open {
   YC.ui = {
     icon,
     openModal,
+    replaceTop,
     closeTop,
     closeAll,
     refreshModal,
@@ -6756,6 +7280,88 @@ body.modal-open {
       </button>`;
   }
 
+  const QUADRANTS = [
+    { key: "q1", title: "重要且紧急", hint: "马上做", important: true, urgent: true },
+    { key: "q2", title: "重要不紧急", hint: "安排时间", important: true, urgent: false },
+    { key: "q3", title: "紧急不重要", hint: "尽快处理或委托", important: false, urgent: true },
+    { key: "q4", title: "不重要不紧急", hint: "少做或删掉", important: false, urgent: false }
+  ];
+
+  function quadrantOf(event) {
+    if (typeof event.important !== "boolean" || typeof event.urgent !== "boolean") return "none";
+    if (event.important && event.urgent) return "q1";
+    if (event.important) return "q2";
+    if (event.urgent) return "q3";
+    return "q4";
+  }
+
+  function quadRow(event) {
+    return `
+      <div class="quad-row${event.done ? " is-done" : ""}" style="--event-color:${U.esc(C.eventColor(event))}">
+        <button class="check${event.done ? " is-done" : ""}" type="button"
+                data-action="toggle-event" data-id="${U.esc(event.id)}"
+                aria-label="${event.done ? "标记为未完成" : "标记为完成"}：${U.esc(event.title)}"
+                aria-pressed="${event.done ? "true" : "false"}">${icon("check")}</button>
+        <button class="quad-row-title" type="button" data-action="open-event" data-id="${U.esc(event.id)}">${U.esc(event.title)}</button>
+        <span class="quad-row-time">${U.esc(event.start || "全天")}</span>
+      </div>`;
+  }
+
+  function quadMatrix(events) {
+    const groups = { q1: [], q2: [], q3: [], q4: [], none: [] };
+    events.forEach((event) => groups[quadrantOf(event)].push(event));
+    const cells = QUADRANTS.map((quad) => `
+      <section class="quad quad--${quad.key}">
+        <div class="quad-head">
+          <span class="quad-title">${quad.title}</span>
+          <span class="quad-count">${groups[quad.key].length}</span>
+        </div>
+        <p class="quad-hint">${quad.hint}</p>
+        <div class="quad-list">
+          ${groups[quad.key].length ? groups[quad.key].map(quadRow).join("") : `<p class="quad-empty">暂无</p>`}
+        </div>
+      </section>`).join("");
+    const loose = groups.none.length
+      ? `
+        <section class="quad-loose">
+          <div class="quad-head">
+            <span class="quad-title">未分类</span>
+            <span class="quad-count">${groups.none.length}</span>
+          </div>
+          <p class="quad-hint">这些日程还没有标记。点开一条，选好重要 / 紧急，它就会进入上方对应象限。</p>
+          <div class="quad-list">${groups.none.map(quadRow).join("")}</div>
+        </section>`
+      : "";
+    return `<div class="quad-grid">${cells}</div>${loose}`;
+  }
+
+  function scheduleBody(mode, events, today, timelineRows) {
+    if (!events.length) {
+      return C.emptyState({
+        icon: "calendar",
+        title: "今天还没有安排",
+        text: "先放进一件最值得推进的小事，完成后再决定下一步。",
+        action: `<button class="btn btn--primary btn--small" type="button" data-action="add-event" data-date="${today}">${icon("plus")}新建日程</button>`
+      });
+    }
+    if (mode === "quad") return quadMatrix(events);
+    return `<div class="timeline-list">${timelineRows}</div>`;
+  }
+
+  function viewSwitch(mode) {
+    return `
+      <div class="view-switch" role="group" aria-label="今天的节奏呈现方式">
+        <button class="view-switch-btn${mode === "time" ? " is-active" : ""}" type="button"
+                data-action="set-today-mode" data-mode="time" aria-pressed="${mode === "time"}">
+          ${icon("list")}时间顺序
+        </button>
+        <button class="view-switch-btn${mode === "quad" ? " is-active" : ""}" type="button"
+                data-action="set-today-mode" data-mode="quad" aria-pressed="${mode === "quad"}">
+          ${icon("grid")}四象限
+        </button>
+      </div>`;
+  }
+
   function render() {
     const data = S.getState();
     const today = U.todayISO();
@@ -6784,14 +7390,8 @@ body.modal-open {
         </div>`
       : "";
 
-    const todayRows = events.length
-      ? events.map((event) => C.eventRow(event, { className: "timeline-event" })).join("")
-      : C.emptyState({
-          icon: "calendar",
-          title: "今天还没有安排",
-          text: "先放进一件最值得推进的小事，完成后再决定下一步。",
-          action: `<button class="btn btn--primary btn--small" type="button" data-action="add-event" data-date="${today}">${icon("plus")}新建日程</button>`
-        });
+    const mode = YC.app && YC.app.ui.todayMode === "quad" ? "quad" : "time";
+    const todayRows = events.map((event) => C.eventRow(event, { className: "timeline-event" })).join("");
 
     const habitRows = data.habits.length
       ? data.habits.map((habit) => {
@@ -6864,9 +7464,12 @@ body.modal-open {
               <div class="section-kicker">TODAY'S RHYTHM</div>
               <h2 class="section-title" id="today-schedule-title">今天的节奏</h2>
             </div>
-            <a class="text-link" href="#schedule">完整日程 ${icon("arrow-right")}</a>
+            <div class="section-tools">
+              ${viewSwitch(mode)}
+              <a class="text-link" href="#schedule">完整日程 ${icon("arrow-right")}</a>
+            </div>
           </div>
-          <div class="timeline-list">${todayRows}</div>
+          ${scheduleBody(mode, events, today, todayRows)}
         </section>
 
         <aside class="today-aside">
@@ -7362,8 +7965,13 @@ body.modal-open {
     return `<div class="stage-scroll"><div class="stage-rail">${stages}</div></div>`;
   }
 
-  function projectCard(project) {
+  function projectCard(project, tagMap) {
     const stats = S.projectStats(project);
+    const pills = (project.tagIds || [])
+      .map((tagId) => (tagMap ? tagMap.get(tagId) : null))
+      .filter(Boolean)
+      .map((tag) => `<span class="tag-pill">${U.esc(tag.name)}</span>`)
+      .join("");
     const firstStart = project.steps[0] ? project.steps[0].start : "";
     const lastEnd = project.steps[project.steps.length - 1] ? project.steps[project.steps.length - 1].end : "";
     const next = stats.next;
@@ -7378,6 +7986,7 @@ body.modal-open {
             <div>
               <h2 class="project-name">${U.esc(project.name)}</h2>
               <div class="project-meta">${U.esc(U.rangeLabel(firstStart, lastEnd))} · ${project.steps.length} 个阶段</div>
+              ${pills ? `<div class="project-tags">${pills}</div>` : ""}
             </div>
           </div>
           <div class="project-score">
@@ -7389,7 +7998,7 @@ body.modal-open {
         <div class="project-bar">${C.progressBar(stats.pct, project.color, { thick: true })}</div>
 
         <div class="project-stage-head">
-          <span>STAGES · 08</span>
+          <span>STAGES · ${U.pad(project.steps.length)}</span>
           <small>${stats.completedStages} 个完成 · ${stats.emptyStages} 个待规划</small>
         </div>
         ${stageRail(project, stats)}
@@ -7402,9 +8011,10 @@ body.modal-open {
         </div>
 
         <div class="project-foot">
-          <span class="project-hint">总进度按 8 个阶段平均计算；空阶段计 0%。</span>
+          <span class="project-hint">总进度按 ${project.steps.length} 个阶段平均计算；空阶段计 0%。</span>
           <div class="row">
             ${next ? `<button class="btn btn--ghost btn--small" type="button" ${nextAction}>打开下一步 ${icon("arrow-right")}</button>` : ""}
+            <button class="btn btn--ghost btn--small" type="button" data-action="edit-stages" data-id="${U.esc(project.id)}">${icon("columns")}编辑阶段</button>
             <button class="icon-btn icon-btn--small" type="button" data-action="edit-project" data-id="${U.esc(project.id)}" aria-label="编辑课题：${U.esc(project.name)}">${icon("edit")}</button>
             <button class="icon-btn icon-btn--small icon-btn--danger" type="button" data-action="delete-project" data-id="${U.esc(project.id)}" aria-label="删除课题：${U.esc(project.name)}">${icon("trash")}</button>
           </div>
@@ -7415,6 +8025,28 @@ body.modal-open {
   function render() {
     const data = S.getState();
     const overall = S.overallProjectStats();
+    const tags = data.tags || [];
+    const tagMap = new Map(tags.map((tag) => [tag.id, tag]));
+    const activeTags = YC.app && Array.isArray(YC.app.ui.projectTags) ? YC.app.ui.projectTags : [];
+    const visible = activeTags.length
+      ? data.projects.filter((project) => activeTags.every((tagId) => (project.tagIds || []).includes(tagId)))
+      : data.projects;
+    const filterBar = tags.length
+      ? `
+        <div class="project-filters" role="group" aria-label="按分类筛选课题">
+          <span class="filter-label">分类</span>
+          <button class="filter-chip${activeTags.length ? "" : " is-active"}" type="button"
+                  data-action="clear-project-tags">全部</button>
+          ${tags.map((tag) => {
+            const on = activeTags.includes(tag.id);
+            return `
+              <button class="filter-chip${on ? " is-active" : ""}" type="button"
+                      data-action="toggle-project-tag" data-id="${U.esc(tag.id)}"
+                      aria-pressed="${on ? "true" : "false"}">${U.esc(tag.name)}</button>`;
+          }).join("")}
+          ${activeTags.length > 1 ? `<span class="filter-hint">只看同时属于 ${activeTags.length} 个分类的课题</span>` : ""}
+        </div>`
+      : "";
     const totalStages = data.projects.reduce((sum, project) => sum + project.steps.length, 0);
     const completedStages = overall.items
       ? overall.items.reduce((sum, item) => sum + item.stats.completedStages, 0)
@@ -7425,9 +8057,10 @@ body.modal-open {
         <div class="view-head-copy">
           <div class="eyebrow">RESEARCH TRACK · ${U.numericDate(U.todayISO())}</div>
           <h1 class="view-title">课题推进</h1>
-          <p class="view-sub">从 Idea 到接收，把课题拆成八个阶段。每个阶段的子事项都来自你的日程，完成一项，进度就往前一格。</p>
+          <p class="view-sub">把课题拆成阶段，阶段数量和内容由你决定。每个阶段的子事项都来自你的日程，完成一项，进度就往前一格。</p>
         </div>
         <div class="view-actions">
+          <button class="btn btn--ghost btn--small" type="button" data-action="manage-tags">分类管理</button>
           <button class="btn btn--primary" type="button" data-action="add-project">${icon("plus")}新建课题</button>
         </div>
       </header>
@@ -7438,14 +8071,23 @@ body.modal-open {
         <div class="project-stat"><strong>${completedStages}/${totalStages}</strong><span>已完成阶段</span></div>
       </section>
 
-      ${data.projects.length
-        ? `<div class="project-list">${data.projects.map(projectCard).join("")}</div>`
-        : `<div class="schedule-empty">${C.emptyState({
-            icon: "project",
-            title: "还没有课题",
-            text: "建立课题后，会自动生成八个阶段。日程关联到阶段后，完成日程就会推进进度。",
-            action: `<button class="btn btn--primary btn--small" type="button" data-action="add-project">${icon("plus")}建立第一个课题</button>`
-          })}</div>`}`;
+      ${filterBar}
+
+      ${visible.length
+        ? `<div class="project-list">${visible.map((project) => projectCard(project, tagMap)).join("")}</div>`
+        : data.projects.length
+          ? `<div class="schedule-empty">${C.emptyState({
+              icon: "target",
+              title: "没有同时属于这些分类的课题",
+              text: "减少分类条件，或者清空筛选看全部课题。",
+              action: `<button class="btn btn--secondary btn--small" type="button" data-action="clear-project-tags">清空筛选</button>`
+            })}</div>`
+          : `<div class="schedule-empty">${C.emptyState({
+              icon: "project",
+              title: "还没有课题",
+              text: "建立课题后，会先按默认模板生成八个阶段，之后可以自由增删和改名。日程关联到阶段后，完成日程就会推进进度。",
+              action: `<button class="btn btn--primary btn--small" type="button" data-action="add-project">${icon("plus")}建立第一个课题</button>`
+            })}</div>`}`;
   }
 
   function stageBody(project, step, index) {
@@ -8356,6 +8998,22 @@ body.modal-open {
             <input class="input" id="event-end" type="time" name="end" value="${U.esc(existing ? existing.end : "10:00")}">
           </div>
         </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="event-important">重要程度</label>
+            <select class="select" id="event-important" name="important">
+              <option value="0" ${existing && existing.important === true ? "" : "selected"}>不重要</option>
+              <option value="1" ${existing && existing.important === true ? "selected" : ""}>重要</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="event-urgent">紧急程度</label>
+            <select class="select" id="event-urgent" name="urgent">
+              <option value="0" ${existing && existing.urgent === true ? "" : "selected"}>不紧急</option>
+              <option value="1" ${existing && existing.urgent === true ? "selected" : ""}>紧急</option>
+            </select>
+          </div>
+        </div>
         <div class="field">
           <label for="event-notes">备注</label>
           <textarea class="textarea" id="event-notes" name="notes" maxlength="2000" placeholder="可选：记录要带的东西、判断标准或下一步。">${existing ? U.esc(existing.notes) : ""}</textarea>
@@ -8364,7 +9022,7 @@ body.modal-open {
           <input type="checkbox" name="done" ${existing && existing.done ? "checked" : ""}>
           已完成
         </label>
-        <p class="field-hint">关联到课题阶段后，会在这个阶段自动生成一条子事项；完成任意一侧，另一侧同步。时间留空表示未定时间。</p>
+        <p class="field-hint">重要 / 紧急决定它在「今天」四象限里的位置；默认是不重要、不紧急。关联到课题阶段后，会在这个阶段自动生成一条子事项；完成任意一侧，另一侧同步。时间留空表示未定时间。</p>
       </form>`;
     const footer = `
       ${existing ? `<button class="btn btn--danger modal-foot-left" type="button" data-action="delete-event" data-id="${U.esc(existing.id)}">删除</button>` : ""}
@@ -8478,6 +9136,13 @@ body.modal-open {
     if (id && !existing) return;
     const selected = existing ? existing.color : U.PROJECT_COLORS[0];
     const start = existing && existing.steps[0] ? existing.steps[0].start : U.todayISO();
+    const tags = S.getState().tags || [];
+    const picked = new Set(existing && Array.isArray(existing.tagIds) ? existing.tagIds : []);
+    const tagChoices = tags.map((tag) => `
+      <label class="tag-choice">
+        <input type="checkbox" name="tags" value="${U.esc(tag.id)}" ${picked.has(tag.id) ? "checked" : ""}>
+        <span>${U.esc(tag.name)}</span>
+      </label>`).join("");
     const body = `
       <form id="project-form" class="form-grid" data-form="project">
         <input type="hidden" name="id" value="${existing ? U.esc(existing.id) : ""}">
@@ -8497,11 +9162,18 @@ body.modal-open {
             <div class="color-choices">${colorChoices("color", U.PROJECT_COLORS, selected)}</div>
           </div>
         </div>
+        <div class="field">
+          <span class="field-label">分类</span>
+          ${tags.length
+            ? `<div class="tag-choices">${tagChoices}</div>`
+            : `<p class="field-hint">还没有分类。在课题推进页右上角「管理分类」里建立，例如成人实验、儿童实验。</p>`}
+          ${tags.length ? `<p class="field-hint">可以同时选多个；分类只用于归类和筛选，不影响进度计算。</p>` : ""}
+        </div>
         <div class="stage-note">
           ${icon("spark")}
           <span>${existing
-            ? "调整开始日期会整体平移八个阶段的日期；具体阶段日期也可以在阶段详情中单独修改。"
-            : "保存后自动生成 Idea 生成、实验程序、数据收集、数据分析、结果讨论、论文写作、投稿、接收八个阶段，每阶段默认 3 周。"}</span>
+            ? `调整开始日期会整体平移全部 ${existing.steps.length} 个阶段的日期；具体阶段日期也可以在阶段详情中单独修改。`
+            : "保存后先自动生成 Idea 生成、实验程序、数据收集、数据分析、结果讨论、论文写作、投稿、接收八个阶段，每阶段默认 3 周。之后可以在课题卡片的「编辑阶段」里增删、改名、调顺序。"}</span>
         </div>
       </form>`;
     const footer = `
@@ -8512,7 +9184,7 @@ body.modal-open {
       key: "project",
       kicker: "RESEARCH TRACK",
       title: existing ? "编辑课题" : "新建课题",
-      sub: existing ? "八个阶段会跟着课题走。" : "建立课题后，把日程关联到阶段，进度会自动推进。",
+      sub: existing ? "阶段会跟着课题走，可以随时增删和改名。" : "建立课题后，把日程关联到阶段，进度会自动推进。",
       body,
       footer,
       wide: true
@@ -8520,7 +9192,93 @@ body.modal-open {
   }
 
 
-  YC.modals = { eventModal, habitModal, projectModal, sparkModal };
+  function stageEditRow(step, index) {
+    return `
+      <div class="stage-edit-row" data-stage-id="${step ? U.esc(step.id) : ""}">
+        <span class="stage-edit-index">${U.pad(index + 1)}</span>
+        <input class="input" type="text" data-stage-name maxlength="40"
+               value="${step ? U.esc(step.name) : ""}" placeholder="阶段名称" aria-label="阶段名称">
+        <button class="icon-btn icon-btn--small" type="button" data-action="stage-move" data-dir="-1" aria-label="上移">↑</button>
+        <button class="icon-btn icon-btn--small" type="button" data-action="stage-move" data-dir="1" aria-label="下移">↓</button>
+        <button class="icon-btn icon-btn--small icon-btn--danger" type="button" data-action="stage-remove" aria-label="删除阶段">${icon("x")}</button>
+      </div>`;
+  }
+
+  function stageEditorModal(projectId) {
+    const project = S.getProject(projectId);
+    if (!project) {
+      YC.ui.toast("这个课题已不存在", { type: "error" });
+      return;
+    }
+    const body = `
+      <form id="stage-editor-form" class="form-grid" data-form="stage-editor" data-project="${U.esc(project.id)}">
+        <div class="form-error" data-form-error hidden>${icon("alert")}<span></span></div>
+        <div class="stage-edit-list">
+          ${project.steps.map((step, index) => stageEditRow(step, index)).join("")}
+        </div>
+        <button class="btn btn--secondary btn--small stage-edit-add" type="button" data-action="stage-add">
+          ${icon("plus")}添加阶段
+        </button>
+        <p class="field-hint">新建阶段接在上一阶段结束的第二天，默认 3 周，日期可以在阶段详情里改。删除阶段会一并删除它的子事项；由日程同步来的日程只解除课题关联，不会被删。</p>
+      </form>`;
+    const footer = `
+      <button class="btn btn--ghost" type="button" data-action="close-modal">取消</button>
+      <button class="btn btn--primary" type="submit" form="stage-editor-form">保存阶段</button>`;
+    YC.ui.openModal({
+      key: "stage-editor",
+      kicker: "STAGES",
+      title: "编辑阶段",
+      sub: `${U.esc(project.name)} · 当前 ${project.steps.length} 个阶段`,
+      body,
+      footer
+    });
+  }
+
+  function tagModalConfig() {
+    const tags = S.getState().tags || [];
+    const rows = tags.length
+      ? tags.map((tag) => `
+          <form class="tag-admin-row" data-form="tag-rename" data-id="${U.esc(tag.id)}">
+            <input class="input" type="text" name="name" maxlength="20" value="${U.esc(tag.name)}" aria-label="分类名称">
+            <button class="btn btn--secondary btn--small" type="submit">保存</button>
+            <button class="icon-btn icon-btn--small icon-btn--danger" type="button"
+                    data-action="delete-tag" data-id="${U.esc(tag.id)}"
+                    aria-label="删除分类：${U.esc(tag.name)}">${icon("trash")}</button>
+          </form>`).join("")
+      : `<p class="settings-copy">还没有分类，先在上面添加一个。</p>`;
+    return {
+      key: "tags",
+      kicker: "CATEGORIES",
+      title: "管理分类",
+      sub: "分类只影响归类和筛选，不改变课题进度。",
+      body: `
+        <div class="form-grid">
+          <form class="tag-admin-add" data-form="tag-add">
+            <input class="input" type="text" name="name" maxlength="20" data-autofocus
+                   placeholder="新分类，例如：儿童实验" aria-label="新分类名称" required>
+            <button class="btn btn--primary btn--small" type="submit">${icon("plus")}添加</button>
+          </form>
+          <div class="tag-admin-list">${rows}</div>
+          <p class="field-hint">删除分类会把课题上的这个标记一起去掉，课题本身不受影响。</p>
+        </div>`,
+      footer: `<button class="btn btn--secondary" type="button" data-action="close-modal">关闭</button>`
+    };
+  }
+
+  function tagModal() {
+    YC.ui.openModal(tagModalConfig());
+  }
+
+  YC.modals = {
+    eventModal,
+    habitModal,
+    projectModal,
+    sparkModal,
+    stageEditorModal,
+    stageEditRow,
+    tagModal,
+    tagModalConfig
+  };
 })();
 
 
@@ -8749,6 +9507,7 @@ body.modal-open {
 
   const VALID_VIEWS = ["today", "schedule", "habits", "projects", "sparks"];
   const THEME_KEY = "yancheng.theme.v1";
+  const TODAY_MODE_KEY = "yancheng.todaymode.v1";
   const VIEW_TITLES = {
     today: "今天",
     schedule: "日程",
@@ -8764,10 +9523,20 @@ body.modal-open {
       scheduleView: "month",
       habitMonth: U.monthKey(U.todayISO()),
       sparkFilter: "all",
-      sparkRemindOnly: false
+      sparkRemindOnly: false,
+      projectTags: [],
+      todayMode: readTodayMode()
     }
   };
   YC.app = app;
+
+  function readTodayMode() {
+    try {
+      return window.localStorage.getItem(TODAY_MODE_KEY) === "quad" ? "quad" : "time";
+    } catch (error) {
+      return "time";
+    }
+  }
 
   let themePref = "auto";
   let deferredInstallPrompt = null;
@@ -9042,6 +9811,18 @@ body.modal-open {
     render();
   }
 
+  function renumberStageRows() {
+    const rows = Array.from(document.querySelectorAll(".stage-edit-list .stage-edit-row"));
+    rows.forEach((row, index) => {
+      const label = row.querySelector(".stage-edit-index");
+      if (label) label.textContent = U.pad(index + 1);
+      const up = row.querySelector('[data-dir="-1"]');
+      const down = row.querySelector('[data-dir="1"]');
+      if (up) up.disabled = index === 0;
+      if (down) down.disabled = index === rows.length - 1;
+    });
+  }
+
   async function handleAction(element) {
     const action = element.dataset.action;
     if (!action) return;
@@ -9084,6 +9865,43 @@ body.modal-open {
       case "add-project":
         YC.modals.projectModal();
         break;
+      case "manage-tags":
+        YC.modals.tagModal();
+        break;
+      case "toggle-project-tag": {
+        const tagId = element.dataset.id;
+        if (!tagId) break;
+        const picked = new Set(app.ui.projectTags || []);
+        if (picked.has(tagId)) picked.delete(tagId);
+        else picked.add(tagId);
+        app.ui.projectTags = Array.from(picked);
+        render();
+        break;
+      }
+      case "clear-project-tags":
+        app.ui.projectTags = [];
+        render();
+        break;
+      case "delete-tag": {
+        const tag = S.getTag(element.dataset.id);
+        if (!tag) break;
+        const usage = S.getTagUsage(tag.id);
+        YC.ui.confirm({
+          title: `删除分类「${tag.name}」？`,
+          message: usage
+            ? `有 ${usage} 个课题用了这个分类，删除后这些课题上的标记会一起去掉，课题本身不受影响。`
+            : "这个分类还没有被任何课题使用。",
+          confirmLabel: "删除分类",
+          onConfirm: () => {
+            S.deleteTag(tag.id);
+            app.ui.projectTags = (app.ui.projectTags || []).filter((id) => id !== tag.id);
+            render();
+            YC.ui.replaceTop(YC.modals.tagModalConfig());
+            YC.ui.toast("分类已删除");
+          }
+        });
+        break;
+      }
       case "edit-project":
         YC.modals.projectModal(element.dataset.id);
         break;
@@ -9092,7 +9910,7 @@ body.modal-open {
         if (!project) break;
         YC.ui.confirm({
           title: "删除这个课题？",
-          message: `「${project.name}」的八个阶段和全部子事项会被删除；关联日程会保留，但解除课题关联。`,
+          message: `「${project.name}」的 ${project.steps.length} 个阶段和全部子事项会被删除；关联日程会保留，但解除课题关联。`,
           confirmLabel: "删除课题",
           onConfirm: () => {
             YC.ui.closeAll();
@@ -9173,6 +9991,53 @@ body.modal-open {
         app.ui.scheduleView = element.dataset.view;
         render();
         break;
+      case "set-today-mode":
+        app.ui.todayMode = element.dataset.mode === "quad" ? "quad" : "time";
+        try {
+          window.localStorage.setItem(TODAY_MODE_KEY, app.ui.todayMode);
+        } catch (error) {
+          // The switch still works for this session.
+        }
+        render();
+        break;
+      case "edit-stages":
+        YC.modals.stageEditorModal(element.dataset.id);
+        break;
+      case "stage-add": {
+        const list = document.querySelector(".stage-edit-list");
+        if (!list) break;
+        const holder = document.createElement("div");
+        holder.innerHTML = YC.modals.stageEditRow(null, 0);
+        const row = holder.firstElementChild;
+        if (!row) break;
+        list.appendChild(row);
+        renumberStageRows();
+        const input = row.querySelector("[data-stage-name]");
+        if (input) input.focus();
+        break;
+      }
+      case "stage-move": {
+        const row = element.closest(".stage-edit-row");
+        const dir = Number(element.dataset.dir) || 0;
+        if (!row || !dir) break;
+        const sibling = dir < 0 ? row.previousElementSibling : row.nextElementSibling;
+        if (!sibling) break;
+        if (dir < 0) row.parentNode.insertBefore(row, sibling);
+        else row.parentNode.insertBefore(sibling, row);
+        renumberStageRows();
+        break;
+      }
+      case "stage-remove": {
+        const row = element.closest(".stage-edit-row");
+        if (!row) break;
+        if (document.querySelectorAll(".stage-edit-list .stage-edit-row").length <= 1) {
+          YC.ui.toast("至少要保留一个阶段", { type: "info" });
+          break;
+        }
+        row.remove();
+        renumberStageRows();
+        break;
+      }
       case "open-day":
         app.ui.selectedDate = element.dataset.date;
         app.ui.scheduleView = "day";
@@ -9320,6 +10185,8 @@ body.modal-open {
           end,
           notes,
           done: fd.get("done") === "on",
+          important: fd.get("important") === "1",
+          urgent: fd.get("urgent") === "1",
           projectId: link.projectId,
           stepId: link.stepId
         }, id || null);
@@ -9353,17 +10220,30 @@ body.modal-open {
         const name = String(fd.get("name") || "").trim();
         const start = String(fd.get("start") || "");
         const color = String(fd.get("color") || U.PROJECT_COLORS[0]);
+        const tagIds = fd.getAll("tags").map(String).filter(Boolean);
         if (!name) throw new Error("请填写课题名称");
         if (!U.isDateString(start)) throw new Error("请选择开始日期");
         if (id) {
-          S.updateProject(id, { name, start, color });
+          S.updateProject(id, { name, start, color, tagIds });
           YC.ui.closeAll();
           YC.ui.toast("课题已更新");
         } else {
-          S.createProject(name, start, color);
+          S.createProject(name, start, color, tagIds);
           YC.ui.closeAll();
-          YC.ui.toast("课题已建立，八个阶段已生成");
+          YC.ui.toast("课题已建立，默认八个阶段已生成，可随时编辑");
         }
+      } else if (type === "tag-add") {
+        const fd = new FormData(form);
+        S.addTag(fd.get("name"));
+        render();
+        YC.ui.replaceTop(YC.modals.tagModalConfig());
+        YC.ui.toast("分类已添加");
+      } else if (type === "tag-rename") {
+        const fd = new FormData(form);
+        S.renameTag(form.dataset.id, fd.get("name"));
+        render();
+        YC.ui.replaceTop(YC.modals.tagModalConfig());
+        YC.ui.toast("分类已更新");
       } else if (type === "stage-dates") {
         const fd = new FormData(form);
         const projectId = form.dataset.project;
@@ -9388,6 +10268,39 @@ body.modal-open {
           const input = document.querySelector('.subtask-add input[name="title"]');
           if (input) input.focus();
         });
+      } else if (type === "stage-editor") {
+        const projectId = form.dataset.project;
+        const project = S.getProject(projectId);
+        if (!project) throw new Error("这个课题已不存在");
+        const rows = Array.from(form.querySelectorAll(".stage-edit-row")).map((row) => ({
+          id: row.dataset.stageId || "",
+          name: String((row.querySelector("[data-stage-name]") || {}).value || "").trim()
+        }));
+        if (!rows.length) throw new Error("至少保留一个阶段");
+        if (rows.some((row) => !row.name)) throw new Error("阶段名称不能为空");
+        const keptIds = new Set(rows.filter((row) => row.id).map((row) => row.id));
+        const removed = project.steps.filter((step) => !keptIds.has(step.id));
+        const removedSubtasks = removed.reduce((sum, step) => sum + step.subtasks.length, 0);
+        const removedLinked = removed.reduce(
+          (sum, step) => sum + step.subtasks.filter((subtask) => subtask.sourceEventId).length,
+          0
+        );
+        const apply = () => {
+          S.saveProjectStages(projectId, rows);
+          YC.ui.closeAll();
+          render();
+          YC.ui.toast("阶段已更新");
+        };
+        if (removedSubtasks) {
+          YC.ui.confirm({
+            title: `删除 ${removed.length} 个阶段？`,
+            message: `其中有 ${removedSubtasks} 个子事项会一起删除${removedLinked ? `，${removedLinked} 条关联日程会保留但只解除课题关联` : ""}。此操作无法撤销。`,
+            confirmLabel: "删除并保存",
+            onConfirm: apply
+          });
+        } else {
+          apply();
+        }
       }
     } catch (error) {
       showFormError(form, error.message || "保存失败，请检查输入");
